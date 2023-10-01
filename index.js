@@ -26,7 +26,7 @@ fs
   })
  })
 
-app.get("/", (req, res) => res.send("Hello Hono!"))
+app.get("/", (req, res) => res.send("Hello from desi collges!"))
 app.get("/search", (req, res) => {
  var keyword = req.query.q
  const r = index.search(keyword, 5)
