@@ -1,5 +1,6 @@
 const express = require("express")
 const csv = require("csv-parser")
+const colleges = require("./data.json")
 const fs = require("fs")
 const { Index, Document } = require("flexsearch")
 const app = new express()
@@ -14,19 +15,15 @@ const index = new Index({
   store: ["college", "state", "district"],
  },
 })
-const colleges = []
-fs
- .createReadStream("data.csv")
- .pipe(csv())
- .on("data", (data) => colleges.push(data))
- .on("end", () => {
-  colleges.forEach((college) => {
-   index.add(college.id, college.college)
-   mapping.set(college.id, college)
-  })
- })
+colleges.forEach((college) => {
+ index.add(college.id, college.college)
+ mapping.set(college.id, college)
+})
 
 app.get("/", (req, res) => res.send("Hello from desi collges!"))
+app.get("/ping", (req, res) => {
+ return res.send("pongggggg")
+})
 app.get("/search", (req, res) => {
  var keyword = req.query.q
  const r = index.search(keyword, 5)
