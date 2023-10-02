@@ -1,9 +1,11 @@
 const express = require("express")
 const csv = require("csv-parser")
 const colleges = require("./data.json")
+const cors = require("cors")
 const fs = require("fs")
 const { Index, Document } = require("flexsearch")
 const app = new express()
+app.use(cors())
 
 const mapping = new Map()
 const index = new Index({
