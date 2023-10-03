@@ -4,7 +4,7 @@ Welcome to the College API! This API showcases a collection of undergraduate eng
 
 ### Usage
 
-1. Use the /search?q={{collegename}} endpoint to get a list of all colleges.
+1. Use the /search?q={{query}} endpoint to get a list of all colleges.
 2. Example: https://indian-colleges-api-5j5n.vercel.app/search?q=rajeev
 
 
